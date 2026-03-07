@@ -1,8 +1,9 @@
-package net.engineeringdigest.journalApp.service;
+package net.project.journalApp.service;
 
-import net.engineeringdigest.journalApp.entity.JournalEntry;
-import net.engineeringdigest.journalApp.entity.User;
-import net.engineeringdigest.journalApp.repository.JournalEntryRepository;
+import lombok.extern.slf4j.Slf4j;
+import net.project.journalApp.entity.JournalEntry;
+import net.project.journalApp.entity.User;
+import net.project.journalApp.repository.JournalEntryRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
+@Slf4j
 public class JournalEntryService {
 
 
@@ -32,8 +34,8 @@ public class JournalEntryService {
            userService.saveUser(user);
        }catch (Exception e)
        {
-           System.out.println(e);
-           throw new RuntimeException("An error occured while saving entry",e);
+           log.error("Error ",e);
+           throw new RuntimeException("An error occurred while saving entry",e);
        }
     }
 
@@ -62,13 +64,10 @@ public class JournalEntryService {
             }
         }catch (Exception e)
         {
-            System.out.println(e);
+            log.error("Error",e);
             throw new RuntimeException("An error occured while deleting entry",e);
         }
         return removed;
     }
 
-//    public List<JournalEntry> findByUserName(String userName){
-//
-//    }
 }

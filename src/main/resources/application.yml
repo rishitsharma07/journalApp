@@ -1,11 +1,3 @@
 spring:
-  data:
-    mongodb:
-      uri: mongodb+srv://rishitsharma1675_db_user:CG9YPjrUBR36yXVh@cluster0.kmapted.mongodb.net/?appName=Cluster0
-      database: journaldb
-      auto-index-creation: true
-
-server:
-  port: 8081
-  servlet:
-    context-path: /journalApp
+  profiles:
+    active: dev
